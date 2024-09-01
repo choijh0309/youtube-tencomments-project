@@ -32,6 +32,7 @@ dependencies {
     implementation 'com.google.api-client:google-api-client:1.33.0'
     implementation 'com.google.apis:google-api-services-youtube:v3-rev20230816-2.0.0'
     implementation 'com.google.http-client:google-http-client-gson:1.42.1'
+    implementation 'mysql:mysql-connector-java:8.0.31'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.h2database:h2'
