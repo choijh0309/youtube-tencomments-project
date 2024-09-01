@@ -55,7 +55,15 @@ public class CommentService {
     @PostConstruct
     @Transactional(readOnly = false)
     public void initializeData() {
-        logger.info("Initializing comment data...");
+        if (categoryRepository.count() == 0) {
+            logger.info("Initializing categories...");
+            for (Category.CategoryName categoryName : Category.CategoryName.values()) {
+                Category category = new Category(categoryName);
+                categoryRepository.save(category);
+                logger.info("Category initialized: {}", categoryName);
+            }
+        }
+
         for (Category.CategoryName categoryName : Category.CategoryName.values()) {
             try {
                 logger.info("Initializing data for category: {}", categoryName);
