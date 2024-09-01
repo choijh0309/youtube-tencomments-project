@@ -29,7 +29,6 @@ Youtube 의 Trending 카테고리를 클릭하면 Now, Music, Gaming, Movies 총
 - YouTube api 할당량 문제
 - Scheduler 24시간 / 1시간 업데이트
 - 카테고리 초기화 이슈
-## 리팩터링
 ## 개선할 점 (확장성)
 - 테스트 코드 작성
 - 대댓글 기능 추가
