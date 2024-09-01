@@ -20,6 +20,15 @@ Youtube 의 Trending 카테고리를 클릭하면 Now, Music, Gaming, Movies 총
 - test : test코드의 작성 및 수정이 이루어졌을 때
 - chore : 외부 라이브러리 임포트 등의 작업을 완료했을 때
 ## 문제 해결 과정
+- FetchType.LAZY 프론트 화면에 나오지 않는 이슈
+- 성능 개선위해 캐싱 고민
+- 영화 api 지원 X
+- 좋아요 수 로직
+- N + 1 문제
+- channel.thumbnail null 문제
+- YouTube api 할당량 문제
+- Scheduler 24시간 / 1시간 업데이트
+- 카테고리 초기화 이슈
 ## 리팩터링
 ## 개선할 점 (확장성)
 - 테스트 코드 작성
