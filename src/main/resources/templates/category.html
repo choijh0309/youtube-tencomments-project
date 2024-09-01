@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head}"></head>
+<body>
+<div th:replace="~{layout :: nav}"></div>
+
+<div class="container">
+  <div class="main-content" th:fragment="content">
+    <h1 class="display-4 mb-4" th:text="${category.name} + ' 인기 댓글'">카테고리 인기 댓글</h1>
+    <div class="comment-list">
+      <div th:each="comment, iterStat : ${comments}" class="comment-item mb-4">
+        <h5 class="comment-rank mb-2" th:text="${iterStat.count} + '위 댓글'">댓글</h5>
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <p class="comment-likes me-2" th:text="${comment.likeCount} + ' likes'">좋아요 수</p>
+              <p class="comment-content" th:text="${comment.content}">댓글 내용</p>
+            </div>
+            <hr class="comment-divider">
+            <div class="video-info mt-3">
+              <div class="row align-items-center">
+                <div class="col-md-4">
+                  <img th:src="${comment.video.thumbnailUrl}" alt="비디오 썸네일" class="img-fluid video-thumbnail">
+                </div>
+                <div class="col-md-8">
+                  <h6 class="video-title mb-2" th:text="${comment.video.title}">비디오 제목</h6>
+                  <div class="d-flex align-items-center">
+                    <img th:src="${comment.video.channel.thumbnailUrl}" alt="채널 썸네일" class="channel-thumbnail me-2">
+                    <a th:href="@{'https://www.youtube.com/channel/' + ${comment.video.channel.id}}" target="_blank" class="channel-name" th:text="${comment.video.channel.title}">채널명</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div th:replace="~{layout :: footer}"></div>
+<th:block th:replace="~{layout :: scripts}"></th:block>
+</body>
+</html>
