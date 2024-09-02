@@ -38,14 +38,18 @@ Youtube 의 Trending 카테고리를 클릭하면 Now, Music, Gaming, Movies 총
 - test : test코드의 작성 및 수정이 이루어졌을 때
 - chore : 외부 라이브러리 임포트 등의 작업을 완료했을 때
 ## 문제 해결 과정
-- FetchType.LAZY 프론트 화면에 나오지 않는 이슈
+- **FetchType.LAZY 프론트 화면에 나오지 않는 이슈**
 <img width="638" alt="image" src="https://github.com/user-attachments/assets/7e25ed45-b6fa-4c91-b2d9-89dccb47eebd">
 
 위 이미지처럼 Video의 썸네일이 화면은 나오지 않았지만, 썸네일이 나올 자리에 마우스를 클릭하면 영상 재생은 됐습니다. 처음엔 프론트엔드 코드 문제인 줄 알았지만 Comment 엔티티와 Video 간의 관계 설정 문제였습니다.
 
 처음엔 fetch 타입이 LAZY로 설정되어 있어, Comment를 조회할 때 Video 정보를 즉시 가져오지 않았습니다. LAZY 대신 EAGER로 Comment 엔티티의 Video 관계를 변경해 해결했습니다.
-- 성능 개선위해 캐싱 고민
-- 영화 api 지원 X
+
+- **영화 api 지원 X**
+다른 카테고리(NOW, MUSIC, GAMING)은 데이터가 다 들어갔지만 영화 카테고리는 불러오지 못했습니다. 로직을 바꿔도 들어가지 않아 youtube data api reference를 참고하니 영화는 지원하지 않아 카테고리에서 제외했습니다.
+
+또한 영화는 스포일러 등 문제로 영화 제작사 요청으로 댓글을 막는 경우가 많아 카테고리에서 제외하는 게 맞다고 판단했습니다.
+
 - 좋아요 수 로직
 - N + 1 문제
 - channel.thumbnail null 문제
