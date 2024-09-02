@@ -39,25 +39,25 @@ Youtube 의 Trending 카테고리를 클릭하면 Now, Music, Gaming, Movies 총
 - test : test코드의 작성 및 수정이 이루어졌을 때
 - chore : 외부 라이브러리 임포트 등의 작업을 완료했을 때
 ## 문제 해결 과정
-- **FetchType.LAZY 프론트 화면에 나오지 않는 이슈**
+### FetchType.LAZY 프론트 화면에 나오지 않는 이슈
 <img width="638" alt="image" src="https://github.com/user-attachments/assets/7e25ed45-b6fa-4c91-b2d9-89dccb47eebd">
 
 위 이미지처럼 Video의 썸네일이 화면은 나오지 않았지만, 썸네일이 나올 자리에 마우스를 클릭하면 영상 재생은 됐습니다. 처음엔 프론트엔드 코드 문제인 줄 알았지만 Comment 엔티티와 Video 간의 관계 설정 문제였습니다.
 
 처음엔 fetch 타입이 LAZY로 설정되어 있어, Comment를 조회할 때 Video 정보를 즉시 가져오지 않았습니다. LAZY 대신 EAGER로 Comment 엔티티의 Video 관계를 변경해 해결했습니다.
 
-- **영화 api 지원 X**
+### Youtube Data Api 에서 영화 api 지원하지 않는 이슈 
 
 다른 카테고리(NOW, MUSIC, GAMING)은 데이터가 다 들어갔지만 영화 카테고리는 불러오지 못했습니다. 로직을 바꿔도 들어가지 않아 youtube data api reference를 참고하니 영화는 지원하지 않아 카테고리에서 제외했습니다.
 
 또한 영화는 스포일러 등 문제로 영화 제작사 요청으로 댓글을 막는 경우가 많아 카테고리에서 제외하는 게 맞다고 판단했습니다.
 
-- **좋아요 수 로직**
+### 좋아요 수 로직
 처음에 최상단 댓글만 가져오니 좋아요 수가 가장 많지 않은 댓글이 프로젝트에 적용됐습니다.
 
 대신 상위 100개(YouTube API의 제한으로 인해 한 번에 가져올 수 있는 최대 댓글 수)의 댓글을 가져온 후 CommentDto 객체로 변환해 좋아요 수를 기준으로 가장 높은 댓글을 선택하게 로직을 수정했습니다.
 
-- **N + 1 문제**
+### N + 1 문제
 
 기능 구현은 했지만 프로젝트를 실행할 때 시간이 오래 걸려 문제를 분석했는데 N + 1 문제였습니다. 
 
@@ -65,13 +65,13 @@ CommentRepository에 새 메서드(findTopCommentsByCategoryAndLastUpdatedAfterW
 
 이 변경으로 인해 데이터베이스 쿼리 수가 크게 줄었습니다.(N + 1 문제 해결) 성능이 향상되고, 필요한 데이터만 한번에 가져와 메모리 사용량이 줄었습니다. 아쉬운 점은 수치로 기록을 하지 못한 점입니다.
 
-- **channel.thumbnail null 문제**
+### channel.thumbnail null 문제
 
 YoutubeService.java 파일의 getPopularVideosByCategory 메소드에 ChannelDto를 생성할 때 thumbnailUrl을 설정하지 않아 채널 썸네일 URL Null 문제가 발생했습니다.
 
 채널의 썸네일 URL을 설정하고, 채널 정보를 추가해 문제를 해결했습니다.
 
-- **Scheduler 24시간 / 1시간 업데이트**
+### Scheduler 24시간 / 1시간 업데이트
   
 CommentService에서 24시간 이전 업데이트 댓글을 삭제했습니다.
 
