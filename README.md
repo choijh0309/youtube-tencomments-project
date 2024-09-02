@@ -6,7 +6,7 @@ Youtube 의 Trending 카테고리를 클릭하면 Now, Music, Gaming, Movies 총
 기존 기획은 4개를 모두 구현하는 것을 목표로 삼았지만, Youtube data api 에서 Movies(30번) 는 지원하지 않아 3개 카테고리로 기획을 변경했습니다.
 
 ## DB 및 클래스 구조
-<img width="753" alt="image" src="https://github.com/user-attachments/assets/8081424e-9c95-42cd-94ac-dea6b268a7b1">
+<img width="856" alt="image" src="https://github.com/user-attachments/assets/0c42c4a6-2ea5-4e22-8025-a6cc2cbd9031">
 
 <img width="1010" alt="image" src="https://github.com/user-attachments/assets/5a48d3dd-5590-473f-89a6-f5b9d83adfda">
 
