@@ -22,6 +22,7 @@
 <img width="563" alt="image" src="https://github.com/user-attachments/assets/093e1af8-17b0-4d32-b9d0-3a59f9991c59">
 
 Youtube 의 Trending 카테고리를 클릭하면 Now, Music, Gaming, Movies 총 4개의 카테고리로 분류됩니다.
+
 기존 기획은 4개를 모두 구현하는 것을 목표로 삼았지만, Youtube data api 에서 Movies(30번) 는 지원하지 않아 3개 카테고리로 기획을 변경했습니다.
 
 ## DB 및 클래스 구조
