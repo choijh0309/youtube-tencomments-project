@@ -1,4 +1,5 @@
 ## TenComments : Real-time YouTube top comments tracker by category
+- 배포 링크: http://158.247.196.113:8080/ (도메인 변경 예정)
 - 사람들의 현재 생각을 알고자 하는 **개인적 궁금증**에서 시작하였습니다.
 - *유튜브*를 선택한 이유: 높은 트래픽과 다양한 의견 수집이 가능하다고 판단하였습니다.
 
