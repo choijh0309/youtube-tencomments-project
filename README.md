@@ -96,4 +96,9 @@ Youtube data api 하루 할당량은 10,000인데 V3DataCommentThreadService.Lis
 
 ### 테스트 코드 작성 및 API 문서화
 
+## 프로젝트 기간
+2024.7.20 ~ 2024.9.1(최초 배포일)
+
+2024.9.2 ~ 수정 중입니다.
+
 
