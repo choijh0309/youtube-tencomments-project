@@ -53,6 +53,10 @@ Youtube 의 Trending 카테고리를 클릭하면 Now, Music, Gaming, Movies 총
 또한 영화는 스포일러 등 문제로 영화 제작사 요청으로 댓글을 막는 경우가 많아 카테고리에서 제외하는 게 맞다고 판단했습니다.
 
 - **좋아요 수 로직**
+처음에 최상단 댓글만 가져오니 좋아요 수가 가장 많지 않은 댓글이 프로젝트에 적용됐습니다.
+
+대신 상위 100개(YouTube API의 제한으로 인해 한 번에 가져올 수 있는 최대 댓글 수)의 댓글을 가져온 후 CommentDto 객체로 변환해 좋아요 수를 기준으로 가장 높은 댓글을 선택하게 로직을 수정했습니다.
+
 - **N + 1 문제**
 
 기능 구현은 했지만 프로젝트를 실행할 때 시간이 오래 걸려 문제를 분석했는데 N + 1 문제였습니다. 
@@ -61,10 +65,18 @@ CommentRepository에 새 메서드(findTopCommentsByCategoryAndLastUpdatedAfterW
 
 이 변경으로 인해 데이터베이스 쿼리 수가 크게 줄었습니다.(N + 1 문제 해결) 성능이 향상되고, 필요한 데이터만 한번에 가져와 메모리 사용량이 줄었습니다. 아쉬운 점은 수치로 기록을 하지 못한 점입니다.
 
-- channel.thumbnail null 문제
-- YouTube api 할당량 문제
-- Scheduler 24시간 / 1시간 업데이트
-- 카테고리 초기화 이슈
+- **channel.thumbnail null 문제**
+
+YoutubeService.java 파일의 getPopularVideosByCategory 메소드에 ChannelDto를 생성할 때 thumbnailUrl을 설정하지 않아 채널 썸네일 URL Null 문제가 발생했습니다.
+
+채널의 썸네일 URL을 설정하고, 채널 정보를 추가해 문제를 해결했습니다.
+
+- **Scheduler 24시간 / 1시간 업데이트**
+  
+CommentService에서 24시간 이전 업데이트 댓글을 삭제했습니다.
+
+CommentScheduler에서 @Scheduled(cron = "0 0 * * * *")을 이용해 매시간 댓글을 업데이트하고 삭제했습니다.
+
 ## 개선할 점 (확장성)
 - 테스트 코드 작성
 - 대댓글 기능 추가
