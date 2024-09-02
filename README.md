@@ -47,12 +47,20 @@ Youtube 의 Trending 카테고리를 클릭하면 Now, Music, Gaming, Movies 총
 처음엔 fetch 타입이 LAZY로 설정되어 있어, Comment를 조회할 때 Video 정보를 즉시 가져오지 않았습니다. LAZY 대신 EAGER로 Comment 엔티티의 Video 관계를 변경해 해결했습니다.
 
 - **영화 api 지원 X**
+
 다른 카테고리(NOW, MUSIC, GAMING)은 데이터가 다 들어갔지만 영화 카테고리는 불러오지 못했습니다. 로직을 바꿔도 들어가지 않아 youtube data api reference를 참고하니 영화는 지원하지 않아 카테고리에서 제외했습니다.
 
 또한 영화는 스포일러 등 문제로 영화 제작사 요청으로 댓글을 막는 경우가 많아 카테고리에서 제외하는 게 맞다고 판단했습니다.
 
-- 좋아요 수 로직
-- N + 1 문제
+- **좋아요 수 로직**
+- **N + 1 문제**
+
+기능 구현은 했지만 프로젝트를 실행할 때 시간이 오래 걸려 문제를 분석했는데 N + 1 문제였습니다. 
+
+CommentRepository에 새 메서드(findTopCommentsByCategoryAndLastUpdatedAfterWithFetchJoin)를 추가해 JPQL(Java Persistence Query Language)을 사용하여 최적화된 쿼리를 실행했습니다. CommentService의 getTopCommentsByCategory 메서드에 추가한 메서드를 적용했습니다. 
+
+이 변경으로 인해 데이터베이스 쿼리 수가 크게 줄었습니다.(N + 1 문제 해결) 성능이 향상되고, 필요한 데이터만 한번에 가져와 메모리 사용량이 줄었습니다. 아쉬운 점은 수치로 기록을 하지 못한 점입니다.
+
 - channel.thumbnail null 문제
 - YouTube api 할당량 문제
 - Scheduler 24시간 / 1시간 업데이트
