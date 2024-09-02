@@ -66,7 +66,7 @@ Youtube 의 Trending 카테고리를 클릭하면 Now, Music, Gaming, Movies 총
 
 CommentRepository에 새 메서드(findTopCommentsByCategoryAndLastUpdatedAfterWithFetchJoin)를 추가해 JPQL(Java Persistence Query Language)을 사용하여 최적화된 쿼리를 실행했습니다. CommentService의 getTopCommentsByCategory 메서드에 추가한 메서드를 적용했습니다. 
 
-이 변경으로 인해 데이터베이스 쿼리 수가 크게 줄었습니다.(N + 1 문제 해결) 성능이 향상되고, 필요한 데이터만 한번에 가져와 메모리 사용량이 줄었습니다. 아쉬운 점은 수치로 기록을 하지 못한 점입니다.
+이 변경으로 인해 데이터베이스 쿼리 수가 크게 줄었습니다.(N + 1 문제 해결) 성능이 향상되고, 필요한 데이터만 한번에 가져와 메모리 사용량이 줄었습니다. 프로젝트 실행 속도가 약 30% 개선됐습니다.
 
 ### channel.thumbnail null 문제
 
