@@ -1,3 +1,8 @@
+## UI
+<img width="500" alt="프로젝트캡쳐3" src="https://github.com/user-attachments/assets/5a2bb88c-66cb-42e6-8405-e5fffc98d799">
+<img width="500" alt="프로젝트캡쳐4" src="https://github.com/user-attachments/assets/dc3184ce-0101-428c-95a9-fbd3540eafa1">
+
+
 ## TenComments : Real-time YouTube top comments tracker by category
 - 이 프로젝트는 사람들의 현재 생각을 알고자 하는 **개인적 궁금증**에서 시작하였습니다.
 - *유튜브*를 선택한 이유: 높은 트래픽과 다양한 의견 수집이 가능하다고 판단하였습니다.
