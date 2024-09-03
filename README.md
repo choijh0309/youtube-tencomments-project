@@ -1,6 +1,6 @@
 ## UI
-<img width="450" alt="프로젝트캡쳐3" src="https://github.com/user-attachments/assets/5a2bb88c-66cb-42e6-8405-e5fffc98d799">
-<img width="450" alt="프로젝트캡쳐4" src="https://github.com/user-attachments/assets/dc3184ce-0101-428c-95a9-fbd3540eafa1">
+<img width="400" alt="프로젝트캡쳐3" src="https://github.com/user-attachments/assets/5a2bb88c-66cb-42e6-8405-e5fffc98d799">
+<img width="400" alt="프로젝트캡쳐4" src="https://github.com/user-attachments/assets/dc3184ce-0101-428c-95a9-fbd3540eafa1">
 
 
 ## TenComments : Real-time YouTube top comments tracker by category
