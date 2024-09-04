@@ -38,14 +38,7 @@ Youtube 의 Trending 카테고리를 클릭하면 Now, Music, Gaming, Movies 총
 <img width="1010" alt="image" src="https://github.com/user-attachments/assets/5a48d3dd-5590-473f-89a6-f5b9d83adfda">
 
 개발 시작 전 최소한의 설계 진행 후, 프로젝트 진행하면서 최종 수정 구조를 완성했습니다.
-## git commit 메시지 규약
-- feat : 새로운 기능을 추가하였을 때
-- fix : 버그를 수정하였을 때
-- docs : README 등 문서 내용을 변경하였을 때
-- style : 들여쓰기, 세미콜론 등을 변경하였을 때
-- refactor : 코드 리팩토링을 했을 때(기능의 변경은 없어야 한다.)
-- test : test코드의 작성 및 수정이 이루어졌을 때
-- chore : 외부 라이브러리 임포트 등의 작업을 완료했을 때
+
 ## 문제 해결 과정
 ### FetchType.LAZY 프론트 화면에 나오지 않는 이슈
 <img width="638" alt="image" src="https://github.com/user-attachments/assets/7e25ed45-b6fa-4c91-b2d9-89dccb47eebd">
@@ -103,7 +96,14 @@ CommentScheduler에서 @Scheduled(cron = "0 0 * * * *")을 이용해 매시간 �
 Youtube data api 하루 할당량은 10,000인데 V3DataCommentThreadService.List 를 호출하는 로직을 개선했지만 아직 가장 많은 할당량을 차지합니다. 이 부분 로직을 리팩토링 할 계획입니다.
 
 ### 테스트 코드 작성 및 API 문서화
-
+## git commit 메시지 규약
+- feat : 새로운 기능을 추가하였을 때
+- fix : 버그를 수정하였을 때
+- docs : README 등 문서 내용을 변경하였을 때
+- style : 들여쓰기, 세미콜론 등을 변경하였을 때
+- refactor : 코드 리팩토링을 했을 때(기능의 변경은 없어야 한다.)
+- test : test코드의 작성 및 수정이 이루어졌을 때
+- chore : 외부 라이브러리 임포트 등의 작업을 완료했을 때
 ## 프로젝트 기간
 2024.7.20 ~ 2024.9.1(최초 배포일)
 
